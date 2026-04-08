@@ -188,7 +188,4 @@ docker compose up --build
 
 ## Acknowledgment
 
-This project is based on and inspired by the work from Microsoft:
-https://github.com/microsoft/REPO_NAME
-
-We thank the original authors for their contributions.
+This project is based on and inspired by the documentation of Azure AI Vision from Microsoft.
