@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azure Vision Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <main class="page">
+        <header class="hero">
+            <h1>Azure AI Vision Web App</h1>
+            <p>
+                This app use the Azure services for image analysis,
+                image classification, object detection, face analysis, OCR.
+            </p>
+        </header>
+        <section class="grid">
+            <article class="card">
+                <h2>1. Image Summary</h2>
+                <p>Get a simple summary with caption, tags, objects, and people from your image.</p>
+                <form id="analyzeForm" class="tool-form">
+                    <input type="file" name="image" accept="image/*" required />
+                    <button type="submit">Summarize image</button>
+                </form>
+                <div id="analyzeResult" class="result-panel visual-result">Upload an image to see a friendly scene summary.</div>
+                <div class="image-preview-box">
+                    <p id="analyzeHint" class="preview-hint">The analyzed image preview will appear here.</p>
+                    <canvas id="analyzeCanvas" class="detection-canvas" hidden></canvas>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>2. Image Classification</h2>
+                <p>Runs your custom classification model from the fruit lab.</p>
+                <form id="classifyForm" class="tool-form">
+                    <input type="file" name="image" accept="image/*" required />
+                    <button type="submit">Classify image</button>
+                </form>
+                <div id="classifyResult" class="result-panel visual-result">The best prediction and confidence scores will appear here.</div>
+                <div class="image-preview-box">
+                    <p id="classifyHint" class="preview-hint">The classified image preview will appear here.</p>
+                    <canvas id="classifyCanvas" class="detection-canvas" hidden></canvas>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>3. Find Objects in Image</h2>
+                <p>Shows a summary of the objects found and highlights them with red boxes on the output image.</p>
+                <form id="detectObjectsForm" class="tool-form">
+                    <input type="file" name="image" accept="image/*" required />
+                    <button type="submit">Find objects</button>
+                </form>
+                <div id="detectObjectsResult" class="result-panel visual-result">The detected object summary will appear here.</div>
+                <div class="image-preview-box">
+                    <p id="detectObjectsHint" class="preview-hint">The output image with detected objects will appear here.</p>
+                    <canvas id="detectObjectsCanvas" class="detection-canvas" hidden></canvas>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>4. Face Analysis</h2>
+                <p>Uses the Azure Face endpoint and draws face boxes directly on the uploaded image.</p>
+                <form id="detectFacesForm" class="tool-form">
+                    <input type="file" name="image" accept="image/*" required />
+                    <button type="submit">Detect faces</button>
+                </form>
+                <div id="detectFacesResult" class="result-panel result-summary">Upload an image to see the annotated face detection result.</div>
+                <div class="image-preview-box">
+                    <p id="detectFacesHint" class="preview-hint">The detected face preview will appear here.</p>
+                    <canvas id="detectFacesCanvas" class="detection-canvas" hidden></canvas>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>5. OCR / Read Text</h2>
+                <p>Reads printed or handwritten text with Azure AI Vision.</p>
+                <form id="ocrForm" class="tool-form">
+                    <input type="file" name="image" accept="image/*" required />
+                    <button type="submit">Read text</button>
+                </form>
+                <div id="ocrResult" class="result-panel visual-result">Recognized text will appear here in a clearer format.</div>
+                <div class="image-preview-box">
+                    <p id="ocrHint" class="preview-hint">The text regions will be highlighted on the image here.</p>
+                    <canvas id="ocrCanvas" class="detection-canvas" hidden></canvas>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
